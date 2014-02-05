@@ -1,0 +1,113 @@
+<!doctype html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>ESED OneApp</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+
+    <!-- build:css styles/main.css -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <link rel="stylesheet" href="bower_components/one-app-core/styles/main.css">
+    <link rel="stylesheet" href="bower_components/toastr/toastr.css">
+    <link rel="stylesheet" href="bower_components/jquery-ui/themes/smoothness/jquery-ui.min.css">
+    <link rel="stylesheet" href="bower_components/select2/select2.css">
+    <link rel="stylesheet" href="bower_components/ng-table/ng-table.min.css">
+    <link rel="stylesheet" href="bower_components/fullcalendar/fullcalendar.css">
+    <link rel="stylesheet" href="bower_components/ng-ckeditor/libs/ckeditor/contents.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css">
+
+    <!-- build:js scripts/ie-shim.js -->
+    <script src="bower_components/explorer-canvas/excanvas.js"></script>
+    <script src="bower_components/es5-shim/es5-shim.js"></script>
+    <script src="bower_components/json3/lib/json3.js"></script>
+    <script src="bower_components/respond/dest/respond.src.js"></script>
+    <script src="bower_components/one-app-core/scripts/oa_ie_safe.js"></script>
+    <!-- endbuild -->
+</head>
+
+<body ng-app="OneApp" id="ng-app">
+
+<div ng-include="'modules/navbar/views/navbar_view.html'"></div>
+
+<!-- Add your site or application content here -->
+<div class="application-content">
+    <div ng-view>
+        <div class="splash">
+            <div class="message">
+                ESED Dashboard
+            </div>
+            <img src="images/Preloader.gif" alt="Preloader">
+        </div>
+    </div>
+</div>
+
+<!-- build:js scripts/vendor.js -->
+<script src="bower_components/jquery/jquery.js"></script>
+
+<!--Angular Modules-->
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-resource/angular-resource.js"></script>
+<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+<script src="bower_components/angular-animate/angular-animate.js"></script>
+<script src="bower_components/angular-route/angular-route.js"></script>
+
+<!--JS Plugins/Utils -->
+<script src="bower_components/jquery-ui/ui/jquery-ui.js"></script>
+<script src="bower_components/fullcalendar/fullcalendar.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+<script src="bower_components/one-app-core/scripts/vendor/spservices/jquery.SPServices-2014.01ALPHA2.js"></script>
+<script src="bower_components/moment/moment.js"></script>
+<script src="bower_components/underscore/underscore.js"></script>
+<script src="bower_components/toastr/toastr.js"></script>
+<script src="bower_components/spin.js/spin.js"></script>
+<script src="bower_components/select2/select2.js"></script>
+<script src="bower_components/firebase-bower/firebase.js"></script>
+
+<!--Angular UI-->
+<script src="bower_components/angular-bootstrap/ui-bootstrap.js"></script>
+<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+<script src="bower_components/angular-ui-utils/ui-utils.js"></script>
+<script src="bower_components/angular-ui-select2/src/select2.js"></script>
+<script src="bower_components/angular-ui-date/src/date.js"></script>
+<script src="bower_components/angular-ui-sortable/src/sortable.js"></script>
+<script src="bower_components/angular-ui-calendar/src/calendar.js"></script>
+
+<!--3rd Party Angular Modules-->
+<script src="bower_components/ng-table/ng-table.src.js"></script>
+<script src="bower_components/angular-google-chart/ng-google-chart.js"></script>
+<script src="bower_components/angularfire/angularfire.js"></script>
+<script src="bower_components/angular-spinner/angular-spinner.js"></script>
+<!-- endbuild -->
+
+<script src="bower_components/ng-ckeditor/libs/ckeditor/ckeditor.js"></script>
+
+<!-- build:js bower_components/ng-ckeditor/ng-ckeditor.src.js -->
+<script src="bower_components/ng-ckeditor/ng-ckeditor.src.js"></script>
+<!-- endbuild -->
+
+<!-- build:js scripts/scripts.js -->
+<script src="scripts/app.js"></script>
+<script src="bower_components/one-app-core/scripts/services/queue.js"></script>
+<script src="bower_components/one-app-core/scripts/services/data-service.js"></script>
+<script src="scripts/services/config.js"></script>
+<script src="bower_components/one-app-core/scripts/services/utility.js"></script>
+<script src="bower_components/one-app-core/scripts/services/model.js"></script>
+
+<script src="scripts/directives/progress_bar_dir.js"></script>
+<script src="bower_components/angular-round-progress/angular-round-progress.js"></script>
+<script src="bower_components/one-app-core/scripts/directives/oa_select/oa_select_dir.js"></script>
+<script src="bower_components/one-app-core/scripts/directives/oa_attachments/oa_attachments_dir.js"></script>
+<script src="bower_components/one-app-core/scripts/directives/oa_comments/oa_comments_dir.js"></script>
+
+<script src="modules/navbar/controllers/navbar_ctrl.js"></script>
+<script src="scripts/controllers/admin-list-map.js"></script>
+<script src="bower_components/one-app-core/modules/dev/controllers/generate_offline_ctrl.js"></script>
+<script src="bower_components/one-app-core/modules/group_manager/controllers/group_manager_ctrl.js"></script>
+<!-- endbuild -->
+
+</body>

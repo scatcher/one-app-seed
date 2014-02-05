@@ -1,0 +1,15 @@
+{
+  "name": "OneApp",
+  "version": "0.0.1",
+  "dependencies": {
+    "one-app-core": "https://github.com/scatcher/one-app-core.git#master"
+  },
+  "devDependencies": {
+    "angular-mocks": "latest",
+    "angular-scenario": "latest"
+  },
+  "resolutions": {
+    "angular": "1.2.11",
+    "jquery": "~1.10.2"
+  }
+}

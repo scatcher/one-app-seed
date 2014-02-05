@@ -1,0 +1,41 @@
+<!doctype html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>ESED OneApp</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+
+    <link rel="stylesheet" href="styles/main.css"/>
+
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css">
+
+    <script src="scripts/ie-shim.js"></script>
+</head>
+
+<body ng-app="OneApp" id="ng-app">
+
+<div ng-include="'modules/navbar/views/navbar_view.html'"></div>
+
+<!-- Add your site or application content here -->
+<div class="application-content">
+    <div ng-view="">
+        <div class="splash">
+            <div class="message">
+                ESED Dashboard
+            </div>
+            <img src="images/Preloader.gif" alt="Preloader">
+        </div>
+    </div>
+</div>
+
+<script src="scripts/vendor.js"></script>
+
+<script src="bower_components/ng-ckeditor/libs/ckeditor/ckeditor.js"></script>
+
+<script src="bower_components/ng-ckeditor/ng-ckeditor.src.js"></script>
+
+
+<script src="scripts/scripts.js"></script>
+
+</body>

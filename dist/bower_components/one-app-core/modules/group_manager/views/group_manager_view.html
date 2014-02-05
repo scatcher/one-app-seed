@@ -1,0 +1,145 @@
+<style type="text/css">
+    select.multiselect {
+        min-height: 400px;
+    }
+    .ui-match {
+        background: yellow;
+    }
+</style>
+
+
+<div class="container">
+    <ul class="nav nav-tabs">
+        <li ng-class="{active: state.activeTab === 'Users'}">
+            <a href ng-click="updateTab('Users')">Users</a>
+        </li>
+        <li ng-class="{active: state.activeTab === 'Groups'}">
+            <a href ng-click="updateTab('Groups')">Groups</a>
+        </li>
+        <li ng-class="{active: state.activeTab === 'UserList'}">
+            <a href ng-click="state.activeTab = 'UserList'">User List</a>
+        </li>
+        <li ng-class="{active: state.activeTab === 'GroupList'}">
+            <a href ng-click="state.activeTab = 'GroupList'">Group List</a>
+        </li>
+    </ul>
+    <div ng-if="state.activeTab === 'Users' || state.activeTab === 'Groups'">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-5">
+                        <span style="font-weight:bold">{{ tabContents.labels.select }}</span>
+                <span ng-if="state.activeTab === 'Groups'">
+                    <select class="form-control" ng-model="state.selectedUser" ng-options="user.Name for user in siteCollectionUsers"
+                            ng-change="updateAvailableGroups()"></select>
+                </span>
+                <span ng-if="state.activeTab === 'Users'">
+                    <select class="form-control" ng-model="state.selectedGroup" ng-options="group.Name for group in siteCollectionGroups"
+                            ng-change="updateAvailableUsers()" style="min-width: 100px;"></select>
+                </span>
+                    </div>
+                    <div class="col-xs-7">
+                        <span style="font-weight:bold">Site/Site Collection: </span>
+                        <input class="form-control" ng-model="state.siteUrl">
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div colspan="3" class="description">{{ tabContents.description}}</div>
+                    </div>
+                </div>
+                <hr class="hr-sm">
+                <div class="row">
+                    <div class="col-xs-5">
+                        <div class="form-group">
+                            <label>{{ tabContents.labels.available }} ({{availableOptions.length}})</label>
+                            <select ng-model="state.selectedAvailableOptions"
+                                    ng-options="option.Name for option in availableOptions"
+                                    multiple="multiple" class="multiselect form-control"></select>
+                        </div>
+                    </div>
+                    <div class="col-xs-2 text-center" style="padding-top: 175px">
+                        <button class="btn btn-default" style="width:80px;"
+                                ng-click="updatePermissions('AddUserToGroup')" title="Add user">
+                            <i class="fa fa-2x fa-angle-double-right"></i>
+                        </button>
+                        <br/><br/>
+                        <button class="btn btn-default" style="width:80px;"
+                                ng-click="updatePermissions('RemoveUserFromGroup')">
+                            <i class="fa fa-2x fa-angle-double-left"></i>
+                        </button>
+                    </div>
+                    <div class="col-xs-5">
+                        <div class="form-group">
+                            <label>{{ tabContents.labels.assigned }} ({{assignedOptions.length}})</label>
+                            <select ng-model="state.selectedAssignedOptions"
+                                    ng-options="option.Name for option in assignedOptions"
+                                    multiple="multiple" class="multiselect form-control"></select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div ng-if="state.activeTab === 'UserList'">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <span style="font-weight:bold">User Filter</span>
+                <input type="text" class="form-control" ng-model="state.userFilter"
+                       ng-change="usersTable.reload()">
+            </div>
+            <table ng-table="usersTable" class="table" template-pagination="custom/pager">
+                <tr ng-repeat="user in $data">
+                    <td data-title="'ID'"> {{ user.ID }}</td>
+                    <td data-title="'Name'">
+                        <a href ng-click="userDetailsLink(user)"
+                           ng-bind-html="user.Name |  highlight:state.userFilter"></a>
+                    </td>
+                    <td data-title="'Email'"> {{ user.Email }}</td>
+                </tr>
+
+            </table>
+        </div>
+    </div>
+    <div ng-if="state.activeTab === 'GroupList'">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <span style="font-weight:bold">Group Filter</span>
+                <input type="text" class="form-control" ng-model="state.groupFilter"
+                       ng-change="groupsTable.reload()">
+            </div>
+            <table ng-table="groupsTable" class="table" template-pagination="custom/pager">
+                <tr ng-repeat="group in $data">
+                    <td data-title="'ID'"> {{ group.ID }}</td>
+                    <td data-title="'Name'">
+                        <a href ng-click="groupDetailsLink(group)"
+                           ng-bind-html="group.Name |  highlight:state.groupFilter"></a>
+                    </td>
+                    <td data-title="'Description'"> {{ group.Description }}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script type="text/ng-template" id="custom/pager">
+    <div class="row">
+        <div class="col-xs-12">
+            <ul class="pager ng-cloak">
+                <li ng-repeat="page in pages"
+                    ng-class="{'disabled': !page.active}"
+                    ng-show="page.type == 'prev' || page.type == 'next'" ng-switch="page.type">
+                    <a ng-switch-when="prev" ng-click="params.page(page.number)" href="">
+                        <i class="fa fa-chevron-left"></i>
+                    </a>
+                    <a ng-switch-when="next" ng-click="params.page(page.number)" href="">
+                        <i class="fa fa-chevron-right"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</script>
