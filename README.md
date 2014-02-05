@@ -3,6 +3,8 @@ one-app-seed
 
 A demo starting point for an AngularJS SharePoint application.  This project relies heavily on Marc Anderson's SPServices to bridge the gap between AngularJS and SharePoint.  I'm still working on adding some demo modules so please check back in a bit to really see what we can do.
 
+Currently, the only working module is a user/group manager.  When placed whithin a site collection it allows you to easily assign/remove multiple users to/from groups and visualize the group layout within your site collection.
+
 ## Usage
 
 Add the contents of the /dist folder to a document library or folder in your SharePoint instance and open the index.html.
