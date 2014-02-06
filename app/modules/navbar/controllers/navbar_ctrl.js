@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('OneApp')
-    .controller('NavbarCtrl', function ($scope, $route, $location, queue) {
+    .controller('NavbarCtrl', function ($scope, $route, $location, queue, usSpinnerService) {
 
         $scope.state = {
             queueCount: 0,
@@ -17,8 +17,10 @@ angular.module('OneApp')
         //Register event listener on the queue service
         queue.registerObserverCallback(function (count) {
             $scope.state.queueCount = count;
-            if (!$scope.$$phase) {
-                $scope.$apply();
+            if(count > 0) {
+                usSpinnerService.spin('nav-spinner');
+            } else {
+                usSpinnerService.stop('nav-spinner');
             }
         });
     });
