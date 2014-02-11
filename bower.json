@@ -9,7 +9,7 @@
     "angular-scenario": "latest"
   },
   "resolutions": {
-    "angular": "1.2.11",
+    "angular": "1.2.12",
     "jquery": "~1.10.2"
   }
 }
